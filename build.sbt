@@ -11,7 +11,7 @@ resolvers ++= Seq(
   "Typesafe Releases" at "http://dl.bintray.com/typesafe/maven-releases/")
 
 lazy val versions = new {
-  val javaparser = "2.1.0"
+  val javaparser = "2.3.0"
   val scalaz = "7.1.3"
 }
 
@@ -30,6 +30,6 @@ lazy val root = (project in file(".")).
     name := "jbproto",
     libraryDependencies ++= Seq(
       "org.scalaz" %% "scalaz-core" % versions.scalaz,
-      "com.github.javaparser" %% "javaparser-core" % versions.javaparser
+      "com.github.javaparser" % "javaparser-core" % versions.javaparser
     )
   )

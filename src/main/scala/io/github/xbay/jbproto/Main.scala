@@ -5,6 +5,10 @@ package io.github.xbay.jbproto
  */
 object Main {
   def main(args: Array[String]) = {
-    println("Hello, " + args(0))
+    val messages: List[Message] = BeanClassLoader.fromFile(args(0))
+    messages.foreach(message => {
+      println(message.toProtoDef())
+      //message.toProtoDef()
+    })
   }
 }
