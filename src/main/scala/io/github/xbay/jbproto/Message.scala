@@ -1,14 +1,11 @@
 package io.github.xbay.jbproto
 
-import scala.collection.JavaConverters._
-import com.github.javaparser._
-import com.github.javaparser.ast._
-import com.github.javaparser.ast.`type`._
-import com.github.javaparser.ast.body._
-
 /**
  * Created by uni.x.bell on 12/9/15.
  */
+
+import scala.collection.JavaConverters._
+import com.github.javaparser.ast.`type`._
 
 sealed trait TypePrefix
 case object Required extends TypePrefix

@@ -22,6 +22,11 @@ assemblyMergeStrategy in assembly := {
     oldStrategy(x)
 }
 
+import sbtassembly.AssemblyPlugin.defaultShellScript
+
+assemblyOption in assembly := (assemblyOption in assembly).value.copy(prependShellScript = Some(defaultShellScript))
+assemblyJarName in assembly := s"${name.value}-${version.value}"
+
 mainClass in assembly := Some("io.github.xbay.jbproto.Main")
 
 lazy val root = (project in file(".")).

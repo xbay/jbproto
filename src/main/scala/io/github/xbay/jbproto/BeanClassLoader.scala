@@ -1,16 +1,15 @@
 package io.github.xbay.jbproto
 
+/**
+ * Created by triplex on 12/14/15.
+ */
 
 import scala.collection.JavaConverters._
 import java.io.FileInputStream
 import com.github.javaparser._
 import com.github.javaparser.ast._
 import com.github.javaparser.ast.body._
-import com.github.javaparser.ast.`type`._
 
-/**
- * Created by triplex on 12/14/15.
- */
 object BeanClassLoader {
   def fromFile(filename: String): List[Message] = {
     val in: FileInputStream = new FileInputStream(filename)
