@@ -66,8 +66,10 @@ case class Field (
   fieldName: String
 )
 
-class Message(name: String) {
+class Message(_name: String) {
+  val name = _name
   var fields: List[Field] = List()
+  var depenences: Set[String] = Set()
 
   def addBeanField(fieldType: Type, fieldName: String) = {
     val children = fieldType.getChildrenNodes()
@@ -106,12 +108,15 @@ class Message(name: String) {
         }
       }
     }
-    //println("%s %d %s".format(if(fieldType.isInstanceOf[PrimitiveType]) "p" else "r" , children.size(), fieldName))
   }
 
   def addField(prefix: TypePrefix, fieldType: FieldType, fieldName: String): Option[Field] = {
     val field = Field(prefix, fieldType, fieldName)
     fields = fields ++ List(field)
+    fieldType match {
+      case t: MessageType => depenences = depenences ++ Set(t.name)
+      case _ =>
+    }
     Some(field)
   }
 
