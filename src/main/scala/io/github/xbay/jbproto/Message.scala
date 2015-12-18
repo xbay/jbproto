@@ -128,6 +128,6 @@ class Message(_name: String) {
     val filedsString = fieldsProto.foldLeft(("", 1))((a, b) => {
       (a._1 + "\n\t" + b + " = %d;".format(a._2), a._2 + 1)
     })._1
-    "message %s {\n%s\n}\n".format(name, filedsString)
+    "message %s {%s\n}\n".format(name, filedsString)
   }
 }

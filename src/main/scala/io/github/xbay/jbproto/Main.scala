@@ -14,8 +14,26 @@ object Main {
     }).foldLeft(List[Message]())((a, b) => {
       a ++ b
     })
-    sortMessage(messages).foreach(message => {
-      println(message.toProtoDef())
+    val sortedMessages = sortMessage(messages)
+    val unsolvedMessages = unSolved(messages, sortedMessages)
+    if(unsolvedMessages.size > 0) {
+      println("message unsolved:")
+      unsolvedMessages.foreach(message => {
+        println(message.name)
+      })
+    } else {
+      sortedMessages.foreach(message => {
+        println(message.toProtoDef())
+      })
+    }
+  }
+
+  def unSolved(messages: List[Message], sortedMessages: List[Message]): List[Message] = {
+    val s = sortedMessages.foldLeft(Set[String]())((a, b) => {
+      a ++ Set(b.name)
+    })
+    messages.filter(message => {
+      !s.contains(message.name)
     })
   }
 
